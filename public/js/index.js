@@ -128,31 +128,30 @@ var handleSignUp = function () {
     API.createUser(user).then(function () {
       console.log("we are back from registering a new user")
     });
-  }
-
-var handleLogin = function () {
-  event.preventDefault();
-  console.log("log in clicked");
- 
-//************************ */ VERIFY PASSWORD ENTERED = PASSWORD IN DB
-if ($("#password").val() !== $("#rep-password").val()) {
-  alert("incorrect password entered")
+  };
 }
-else {
+  var handleLogin = function () {
+    event.preventDefault();
+    console.log("log in clicked");
+    //************************ */ VERIFY PASSWORD ENTERED = PASSWORD IN DB
+    // if ($("#password").val() !== $("#rep-password").val()) {
+    //   alert("incorrect password entered")
+    // }
+    // else {
     var user = {
-    email: $("#emaillogin").val(),
-    password: $("#passlogin").val(),
-  }
-  console.log(user)
-  API.loginUser(user).then(function(dbUser) {
-    console.log("we are back from logging in a user: ", dbUser)
-//*********************** */ RENDER NEW PAGE
-  });
+      email: $("#emaillogin").val(),
+      password: $("#passlogin").val(),
+    }
+    console.log(user);
+    API.loginUser(user).then(function (dbUser) {
+      console.log("we are back from logging in a user: ", dbUser)
+      //*********************** */ RENDER NEW PAGE
+    });
+  };
 
-}
+  // Add event listeners to the submit and delete buttons
+  $submitBtn.on("click", handleFormSubmit);
+  $exampleList.on("click", ".delete", handleDeleteBtnClick);
+  $("#signup").on("click", handleSignUp);
+  $("#login").on("click", handleLogin);
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
-$("#signup").on("click", handleSignUp);
-$("#login").on("click", handleLogin);
