@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "daveyjonezz",
-    "password": null,
-    "database": "exampledb",
+    "password": "Bmth3652.",
+    "database": "horus_db",
     "host": "localhost",
     "dialect": "mysql"
   },
