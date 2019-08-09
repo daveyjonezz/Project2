@@ -130,7 +130,8 @@ var handleSignUp = function () {
     });
   };
 }
-  var handleLogin = function () {
+
+var handleLogin = function () {
     event.preventDefault();
     console.log("log in clicked");
     //************************ */ VERIFY PASSWORD ENTERED = PASSWORD IN DB
@@ -149,9 +150,24 @@ var handleSignUp = function () {
     });
   };
 
+var toggleSignUp =function(){
+      //  /panel8
+     $(".secondtab").click();
+      // alert("panel8")
+}
+
+var toggleLogIn =function(){
+  //  /panel8
+ $(".firsttab").click();
+  // alert("panel8")
+}
+
   // Add event listeners to the submit and delete buttons
   $submitBtn.on("click", handleFormSubmit);
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
   $("#signup").on("click", handleSignUp);
   $("#login").on("click", handleLogin);
+
+  $("#register").on("click",toggleSignUp);
+  $("#loginTab").on("click", toggleLogIn);
 
