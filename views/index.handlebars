@@ -1,13 +1,56 @@
 <div id="home">
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-md-12">
         <h1>{{msg}}</h1>
-        {{!-- <h2>This is our Home Page!</h2> --}}
-  
-{{!-- === --}}
+      </div>
+    </div>
 
- <!--Modal: Login / Register Form-->
+    {{!-- logo panel --}}
+    <div class="row">
+      <div class="col-md-3">
+        <img src="/assets/images/logos/full-logo-tag.png" id="logo" alt="logo and tagline">
+      </div>
+
+      {{!-- main image panel --}}
+      <div class="col-md-9">
+        <img src="/assets/images/backgrounds/calm-day.png" id="logo" alt="logo and tagline">
+      </div>
+
+      {{!-- icons --}}
+      <div class="col-md-3 col-md-offset-3">
+        <div class="responsive rounded-circle-1">
+          <img src="/assets/images/button-icons/air.png">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-md-offset-3">
+        <div class="responsive rounded-circle-2">
+          <img src="/assets/images/button-icons/fire.png">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-md-offset-3">
+        <div class="responsive rounded-circle-3">
+          <img src="/assets/images/button-icons/earth.png">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-md-offset-3">
+        <div class="responsive rounded-circle-4">
+          <img src="/assets/images/button-icons/water.png">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!--Modal: Login / Register Form-->
 <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
     <!--Content-->
@@ -56,7 +99,8 @@
                 <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
                 <p>Forgot <a href="#" class="blue-text">Password?</a></p>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto"
+                data-dismiss="modal">Close</button>
             </div>
 
           </div>
@@ -67,7 +111,7 @@
 
             <!--Body-->
             <div class="modal-body">
- <div class="md-form form-sm mb-5">
+              <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
                 <input type="name" id="name" class="form-control form-control-sm validate">
                 <label data-error="wrong" data-success="right" for="modalLRInput12">Your Name</label>
@@ -101,7 +145,8 @@
               <div class="options text-right">
                 <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto"
+                data-dismiss="modal">Close</button>
             </div>
           </div>
           <!--/.Panel 8-->
@@ -123,20 +168,20 @@
 
 {{!-- === --}}
 
-         {{!-- <form class="clearfix mb-4" action="POST">
+{{!-- <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="example-text">Example Text</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div> --}}
-                   
-            {{!-- <div class="form-group">
+
+{{!-- <div class="form-group">
             <label for="example-description">Example Description</label>
             <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form> --}}
-        
-        {{!-- <h3>Examples:</h3>
+
+{{!-- <h3>Examples:</h3>
         <ul id="example-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
@@ -147,9 +192,9 @@
         </ul> --}}
 
 
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -158,5 +203,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <script src="/js/index.js"></script>
-
-
