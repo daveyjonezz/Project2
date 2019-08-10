@@ -1,9 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
     var Sensor = sequelize.define("Sensor", {
-      SensorType: {
+      sensorType: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      sensorStatus: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0,
+      }
     });
   
     Sensor.associate = function(models) {
