@@ -149,9 +149,19 @@ var handleSignUp = function () {
     });
   };
 
+  var  handleToggleSignUp =function(){
+    $("#registerTab").click();
+  };
+
+  var  handleToggleLogIn =function(){
+    $("#loginTab").click();
+  };
+
+
   // Add event listeners to the submit and delete buttons
   $submitBtn.on("click", handleFormSubmit);
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
   $("#signup").on("click", handleSignUp);
   $("#login").on("click", handleLogin);
-
+  $("#register").on("click", handleToggleSignUp);
+  $("#loginAccount").on("click", handleToggleLogIn);
