@@ -120,9 +120,13 @@ var handleSignUp = function () {
   }
   else {
     var user = {
-      name: $("#name").val(),
-      email: $("#email").val(),
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
       password: $("#password").val(),
+      email: $("#email").val(),
+      phoneNum: $("#phoneNum").val(),
+      location: $("#location").val(),
+      consent: $('#check1').is(':checked'),
     }
     console.log(user);
     API.createUser(user).then(function () {
@@ -149,11 +153,11 @@ var handleSignUp = function () {
     });
   };
 
-  var  handleToggleSignUp =function(){
+  var handleToggleSignUp =function(){
     $("#registerTab").click();
   };
 
-  var  handleToggleLogIn =function(){
+  var handleToggleLogIn =function(){
     $("#loginTab").click();
   };
 
