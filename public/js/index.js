@@ -39,6 +39,13 @@ var API = {
       type: "GET"
     });
   },
+  getSendMessage: function (user) {
+    console.log(user)
+    return $.ajax({
+      url: "send/" + user.email,
+      type: "GET"
+    });
+  },
   deleteExample: function (id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -132,6 +139,9 @@ var handleSignUp = function () {
     API.createUser(user).then(function () {
       console.log("we are back from registering a new user")
     });
+    API.getSendMessage(user).then(function(data){
+      console.log(data)
+    });
   };
 }
   var handleLogin = function () {
@@ -147,9 +157,13 @@ var handleSignUp = function () {
       password: $("#passlogin").val(),
     }
     console.log(user);
+    API.getSendMessage(user).then(function(data){
+      console.log(data);
+    });
     API.loginUser(user).then(function (dbUser) {
       console.log("we are back from logging in a user: ", dbUser)
       //*********************** */ RENDER NEW PAGE
+      
     });
   };
 
