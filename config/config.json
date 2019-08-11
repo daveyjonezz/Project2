@@ -1,14 +1,14 @@
 {
   "development": {
-    "username": "daveyjonezz",
-    "password": "Bmth3652.",
+    "username": "madeleinekemeny",
+    "password": "Jungyoon1",
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "daveyjonezz",
-    "password": "Bmth3652.",
+    "username": "madeleinekemeny",
+    "password": "Jungyoon1",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
