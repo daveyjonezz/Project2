@@ -1,4 +1,4 @@
-// Get references to page elements
+// Get references to page elements.
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -34,7 +34,8 @@ var API = {
   },
   loginUser: function (user) {
     console.log(user)
-    return $.ajax({
+    // return $.ajax({
+    $.ajax({  
       url: "api/users/" + user.email,
       type: "GET"
     });
@@ -120,9 +121,13 @@ var handleSignUp = function () {
   }
   else {
     var user = {
-      name: $("#name").val(),
-      email: $("#email").val(),
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
       password: $("#password").val(),
+      email: $("#email").val(),
+      phoneNum: $("#phoneNum").val(),
+      location: $("#location").val(),
+      consent: $('#check1').is(':checked'),
     }
     console.log(user);
     API.createUser(user).then(function () {
@@ -143,15 +148,27 @@ var handleSignUp = function () {
       password: $("#passlogin").val(),
     }
     console.log(user);
-    API.loginUser(user).then(function (dbUser) {
-      console.log("we are back from logging in a user: ", dbUser)
-      //*********************** */ RENDER NEW PAGE
-    });
+    API.loginUser(user)
+    // .then(function (dbUser) 
+    // {
+    //   console.log("we are back from logging in a user: ", dbUser)
+    //   //*********************** */ RENDER NEW PAGE
+    // });
   };
+
+  var handleToggleSignUp =function(){
+    $("#registerTab").click();
+  };
+
+  var handleToggleLogIn =function(){
+    $("#loginTab").click();
+  };
+
 
   // Add event listeners to the submit and delete buttons
   $submitBtn.on("click", handleFormSubmit);
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
   $("#signup").on("click", handleSignUp);
   $("#login").on("click", handleLogin);
-
+  $("#register").on("click", handleToggleSignUp);
+  $("#loginAccount").on("click", handleToggleLogIn);
