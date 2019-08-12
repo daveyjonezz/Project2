@@ -44,6 +44,7 @@ db.sequelize.sync().then(function() {
       PORT
     );
   });
+});
 
 
 module.exports = app;
