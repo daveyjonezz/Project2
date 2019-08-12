@@ -25,12 +25,18 @@ module.exports = function(app) {
 
     app.get("/api/users/:email", function(req, res) {
         console.log("req.params: ", req.params)
+        // db.User.findAll
+        // (
         db.User.findOne({
-            where: {
+        where: 
+            {
                 email: req.params.email
             }
-        }).then(function(dbUser) {
+        }).then(function (dbUser)
+         {
+// console.log(err)
             console.log("dbUser: ", dbUser)
+            // res.json(dbUser);
             res.render("userPage");
         });
     });

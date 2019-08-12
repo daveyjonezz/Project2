@@ -1,5 +1,4 @@
-// Get references to page elements
-console.log("index.js loaded ")
+// Get references to page elements.
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -155,15 +154,27 @@ var handleSignUp = function () {
       password: $("#passlogin").val(),
     }
     console.log(user);
-    API.loginUser(user).then(function (dbUser) {
-      console.log("we are back from logging in a user: ", dbUser)
-      //*********************** */ RENDER NEW PAGE
-    });
+    API.loginUser(user)
+    // .then(function (dbUser) 
+    // {
+    //   console.log("we are back from logging in a user: ", dbUser)
+    //   //*********************** */ RENDER NEW PAGE
+    // });
   };
+
+  var handleToggleSignUp =function(){
+    $("#registerTab").click();
+  };
+
+  var handleToggleLogIn =function(){
+    $("#loginTab").click();
+  };
+
 
   // Add event listeners to the submit and delete buttons
   $submitBtn.on("click", handleFormSubmit);
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
   $("#signup").on("click", handleSignUp);
   $("#login").on("click", handleLogin);
-
+  $("#register").on("click", handleToggleSignUp);
+  $("#loginAccount").on("click", handleToggleLogIn);
