@@ -36,7 +36,6 @@ module.exports = function(app) {
          {
 // console.log(err)
             console.log("dbUser: ", dbUser)
-            // res.json(dbUser);
             res.render("userPage");
         });
     });
