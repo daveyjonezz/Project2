@@ -1,4 +1,3 @@
-// Get references to page elements.
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -23,7 +22,10 @@ var API = {
       },
       type: "POST",
       url: "api/users",
-      data: JSON.stringify(user)
+      data: JSON.stringify(user),
+      success: function (data) {
+        $("body").html(data);
+      }
     });
   },
   getExamples: function () {
@@ -35,9 +37,11 @@ var API = {
   loginUser: function (user) {
     console.log(user)
     // return $.ajax({
-    $.ajax({  
       url: "api/users/" + user.email,
-      type: "GET"
+      type: "GET",
+      success: function (data, textStatus, jqXHR) {
+        $("body").html(data);
+      }
     });
   },
   deleteExample: function (id) {

@@ -2,17 +2,25 @@
   line-height: 2.5;
 }
 
+.modal-icon{
+  padding: 5px;
+}
+
+.list-group-item {
+  line-height: 2.5;
+}
+
 #logo {
  float: left; 
- margin: 20px; 
+ margin: 30px; 
 }
 
 .col-md-3 {
-  padding: 20px;
+  padding: 30px;
 }
 
 .col-md-9 {
-padding: 20px;
+margin: 30px;
 }
 
 .background {
@@ -52,4 +60,10 @@ padding: 20px;
   width: 46px;
   height: 46px;
   box-shadow: 0,0, 5px --> color needs to be activated in script. */
+ }
+
+ li {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 9pt;
+   color: #1B75BB;
  }
