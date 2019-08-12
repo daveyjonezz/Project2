@@ -59,11 +59,11 @@ module.exports = function (app) {
 
     app.get("/send/:email", function (req, res) {
         console.log("hello req.params: ", req.params);
-        db.User.findOne({
-            where: {
-                email: req.params.email
-            }
-        }).then(function (dbUser) {
+        // db.User.findOne({
+        //     where: {
+        //         email: req.params.email
+        //     }
+        // }).then(function (dbUser) {
             console.log(dbUser);
             console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
             twilioClient.messages.create({
@@ -75,5 +75,5 @@ module.exports = function (app) {
                 res.json(message.sid)
             });
         });
-    });
+    // });
 };
