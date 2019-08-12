@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.post("/api/users", function (req, res) {
         console.log(req.body)
         db.User.create(req.body).then(function (dbUser) {
-            res.json(dbUser);
+            res.render("userPage");
         });
     });
 
@@ -29,15 +29,13 @@ module.exports = function (app) {
         // db.User.findAll
         // (
         db.User.findOne({
-        where: 
+            where:
             {
                 email: req.params.email
             }
-        }).then(function (dbUser)
-         {
-// console.log(err)
+        }).then(function (dbUser) {
+            // console.log(err)
             console.log("dbUser: ", dbUser)
-            // res.json(dbUser);
             res.render("userPage");
         });
     });
@@ -57,23 +55,23 @@ module.exports = function (app) {
         });
     });
 
-    app.get("/send/:email", function (req, res) {
+    app.get("/send", function (req, res) {
         console.log("hello req.params: ", req.params);
         // db.User.findOne({
         //     where: {
         //         email: req.params.email
         //     }
         // }).then(function (dbUser) {
-            console.log(dbUser);
-            console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
-            twilioClient.messages.create({
-                to: process.env.YING_DEST_PHONE_NUMBER,
-                from: process.env.TWILIO_NET_PHONE_NUMBER,
-                body: 'Hello from Ying'
-            }).then(message => {
-                console.log("Your alert message was sent successful", message.sid)
-                res.json(message.sid)
-            });
+        // console.log(dbUser);
+        console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
+        twilioClient.messages.create({
+            to: process.env.YING_DEST_PHONE_NUMBER,
+            from: process.env.TWILIO_NET_PHONE_NUMBER,
+            body: 'Hello from HORUS, this is the test message for your flooding alert system!'
+        }).then(message => {
+            console.log("Your alert message was sent successful", message.sid)
+            res.json(message.sid)
         });
+    });
     // });
-};
+}

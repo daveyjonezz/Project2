@@ -1,51 +1,50 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>{{msg}}</h1>
-      </div>
+
+  {{!-- logo panel --}}
+  <div class="row">
+    <div class="col-md-3">
+      <img src="/assets/images/logos/full-logo-tag.png" id="logo" alt="logo and tagline">
+
+      <ul>
+        <li>Client: Madeleine Kemeny</li>
+        <li>Zip code: 60202</li>
+        <li>Email: madeleinekemeny@gmail.com</li>
+        <li>Phone: 773-510-8033</li>
+      </ul>
+      <button class="btn-success" id="test-send-message">TEST?</button>
+      <button class="btn-success" id="update-user-profile">UPDATE?</button>
+      <button class="btn-success" id="flooding-alert">ALARM?</button>
     </div>
 
-    {{!-- logo panel --}}
-    <div class="row">
-      <div class="col-md-3">
-        <img src="/assets/images/logos/full-logo-tag.png" id="logo" alt="logo and tagline">
-      </div>
+    {{!-- main image panel --}}
+    <div class="col-md-9">
+      <img src="/assets/images/backgrounds/calm-day.png" id="background">
+      {{!-- weather details --}}
+      {{!-- <p id="forcast">The current conditions in your home zip code:</p> --}}
+      <br>
 
-      {{!-- main image panel --}}
-      <div class="col-md-9">
-        <img src="/assets/images/backgrounds/calm-day.png" id="logo" alt="logo and tagline">
-        <!-- weather widget-->
-        <p id="forcast"></p>
-        
-      </div>
+      <div class="row">
 
-      {{!-- icons --}}
-      <div class="col-md-3 col-md-offset-3">
+        {{!-- icons --}}
         <div class="responsive rounded-circle-1">
           <img src="/assets/images/button-icons/air.png">
         </div>
-      </div>
 
-      <div class="col-md-3 col-md-offset-3">
         <div class="responsive rounded-circle-2">
           <img src="/assets/images/button-icons/fire.png">
         </div>
-      </div>
 
-      <div class="col-md-3 col-md-offset-3">
         <div class="responsive rounded-circle-3">
           <img src="/assets/images/button-icons/earth.png">
         </div>
-      </div>
 
-      <div class="col-md-3 col-md-offset-3">
         <div class="responsive rounded-circle-4">
           <img src="/assets/images/button-icons/water.png">
         </div>
       </div>
-
     </div>
 
   </div>
 
 </div>
+
