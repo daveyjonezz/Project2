@@ -1,15 +1,10 @@
 {
   "development": {
-    "username": "madeleinekemeny",
-    "password": "Jungyoon1",
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-
-    "username": "daveyjonezz",
-    "password": null,
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
