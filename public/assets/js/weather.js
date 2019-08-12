@@ -1,11 +1,9 @@
 // var weather = require('weather-js');
-
 // Options:
 // search:     location name or zipcode
 // degreeType: F or C
 
 var zipCode = '60046'
-
 
 $.get("/api/weather/" + zipCode).then(function(results) {
 
