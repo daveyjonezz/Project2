@@ -1,4 +1,5 @@
 // Get references to page elements
+console.log("index.js loaded ")
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -23,7 +24,10 @@ var API = {
       },
       type: "POST",
       url: "api/users",
-      data: JSON.stringify(user)
+      data: JSON.stringify(user),
+      success: function (data) {
+        $("body").html(data);
+      }
     });
   },
   getExamples: function () {
@@ -34,9 +38,13 @@ var API = {
   },
   loginUser: function (user) {
     console.log(user)
+    // return $.ajax({
     return $.ajax({
       url: "api/users/" + user.email,
-      type: "GET"
+      type: "GET",
+      success: function (data, textStatus, jqXHR) {
+        $("body").html(data);
+      }
     });
   },
   deleteExample: function (id) {
@@ -120,9 +128,13 @@ var handleSignUp = function () {
   }
   else {
     var user = {
-      name: $("#name").val(),
-      email: $("#email").val(),
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
       password: $("#password").val(),
+      email: $("#email").val(),
+      phoneNum: $("#phoneNum").val(),
+      location: $("#location").val(),
+      consent: $('#check1').is(':checked'),
     }
     console.log(user);
     API.createUser(user).then(function () {

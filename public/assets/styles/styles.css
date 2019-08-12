@@ -5,3 +5,65 @@
 .modal-icon{
   padding: 5px;
 }
+
+.list-group-item {
+  line-height: 2.5;
+}
+
+#logo {
+ float: left; 
+ margin: 30px; 
+}
+
+.col-md-3 {
+  padding: 30px;
+}
+
+.col-md-9 {
+margin: 30px;
+}
+
+.background {
+  z-index: ;
+}
+
+.card {
+  background-color: white;
+  margin: 25px;
+  color: black;
+
+}
+
+.rounded-circle-1 {
+  float: left;
+  width: 46px;
+  height: 46px;
+  /* box-shadow: 0,0, 5px --> color needs to be activated in script. */
+}
+
+.rounded-circle-2, .rounded-circle-3, .rounded-circle-4 {
+  float: left;
+  width: 46px;
+  height: 46px;
+  /* box-shadow: 0,0, 5px --> color needs to be activated in script. */
+ }
+
+.rounded-circle-3, .rounded-circle-4 {
+  float: left;
+  width: 46px;
+  height: 46px;
+  box-shadow: 0,0, 5px,  --> color needs to be activated in script. */
+ }
+
+.rounded-circle-4 {
+  float: left;
+  width: 46px;
+  height: 46px;
+  box-shadow: 0,0, 5px --> color needs to be activated in script. */
+ }
+
+ li {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 9pt;
+   color: #1B75BB;
+ }
