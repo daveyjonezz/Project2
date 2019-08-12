@@ -52,20 +52,22 @@ module.exports = function (app) {
     });
 
     app.get("/send/:email", function (req, res) {
-        console.log("req.params: ", req.params)
-        // db.User.findOne({
-        //     where: {
-        //         email: req.params.email
-        //     }
-        // }).then(function (dbUser) {
-        twilioClient.messages.create({
-            to: process.env.YING_DEST_PHONE_NUMBER,
-            from: process.env.TWILIO_NET_PHONE_NUMBER,
-            body: 'Hello from Ying'
-        }).then(message => {
-            console.log(message.sid)
-            res.json(message.sid)
+        console.log("hello req.params: ", req.params);
+        db.User.findOne({
+            where: {
+                email: req.params.email
+            }
+        }).then(function (dbUser) {
+            console.log(dbUser);
+            console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
+            twilioClient.messages.create({
+                to: process.env.YING_DEST_PHONE_NUMBER,
+                from: process.env.TWILIO_NET_PHONE_NUMBER,
+                body: 'Hello from Ying'
+            }).then(message => {
+                console.log("Your alert message was sent successful", message.sid)
+                res.json(message.sid)
+            });
         });
-        //});
     });
 };

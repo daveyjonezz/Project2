@@ -40,7 +40,7 @@ var API = {
     });
   },
   getSendMessage: function (user) {
-    console.log(user)
+    console.log("hello", user)
     return $.ajax({
       url: "send/" + user.email,
       type: "GET"
@@ -158,7 +158,7 @@ var handleSignUp = function () {
     }
     console.log(user);
     API.getSendMessage(user).then(function(data){
-      console.log(data);
+      console.log("hello", data);
     });
     API.loginUser(user).then(function (dbUser) {
       console.log("we are back from logging in a user: ", dbUser)
