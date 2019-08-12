@@ -1,3 +1,4 @@
+// Get references to page elements.
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -37,6 +38,7 @@ var API = {
   loginUser: function (user) {
     console.log(user)
     // return $.ajax({
+    return $.ajax({
       url: "api/users/" + user.email,
       type: "GET",
       success: function (data, textStatus, jqXHR) {
