@@ -10,6 +10,10 @@
   line-height: 2.5;
 }
 
+ul {
+  margin-left: 10px;
+}
+
 #logo {
  float: left; 
  margin: 30px; 
@@ -34,36 +38,44 @@ margin: 30px;
 
 }
 
-.rounded-circle-1 {
+.rounded-circle-1, .rounded-circle-2, .rounded-circle-3, .rounded-circle-4{
   float: left;
   width: 46px;
   height: 46px;
-  /* box-shadow: 0,0, 5px --> color needs to be activated in script. */
+  margin: 10px;
+  border: limegreen;
+  border-width: 5px;
 }
 
-.rounded-circle-2, .rounded-circle-3, .rounded-circle-4 {
+.rounded-circle-4-red {
   float: left;
   width: 46px;
   height: 46px;
-  /* box-shadow: 0,0, 5px --> color needs to be activated in script. */
- }
-
-.rounded-circle-3, .rounded-circle-4 {
-  float: left;
-  width: 46px;
-  height: 46px;
-  box-shadow: 0,0, 5px,  --> color needs to be activated in script. */
- }
-
-.rounded-circle-4 {
-  float: left;
-  width: 46px;
-  height: 46px;
-  box-shadow: 0,0, 5px --> color needs to be activated in script. */
+  box-shadow: 0 4px 8px 0 rgba(252, 0, 0, 0.6), 0 6px 20px 0 rgba(252, 0, 0, 0.6);
  }
 
  li {
    font-family: Arial, Helvetica, sans-serif;
    font-size: 9pt;
    color: #1B75BB;
+ }
+
+ button {
+   border: none;
+   background-color: #1B75BB;
+   font-size: 8pt;
+   color:white;
+   border-radius: 5px;
+   box-align: center;
+   text-align: center;
+   line-height: 11px;
+   padding: 5px;
+ }
+
+
+ #background {
+   width: 100%;
+   height: auto;
+   margin-bottom: 10px;
+  
  }

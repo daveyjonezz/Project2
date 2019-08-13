@@ -2,20 +2,30 @@
 
   {{!-- logo panel --}}
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <img src="/assets/images/logos/full-logo-tag.png" id="logo" alt="logo and tagline">
-
       <ul>
-        <li>Client: Madeleine Kemeny</li>
-        <li>Zip code: 60202</li>
-        <li>Email: madeleinekemeny@gmail.com</li>
-        <li>Phone: 773-510-8033</li>
+        <li><strong>Client: </strong><span id="fullName"></span></li>
+        <li><strong>Zip code: </strong><span id="zipcode"></span></li>
+        <li><strong>Email: </strong><span id="email"></span></li>
+        <li><strong>Phone: </strong><span id="phoneNum"></li>
       </ul>
-      <button class="btn-success">UPDATE?</button>
+      <br>
+      <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First button">
+          <button  type="button" class="user-controls">UPDATE<br>PROFILE</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second button">
+          <button class="user-controls">TEST<br>SENSORS</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second button">
+          <button class="user-controls">RESET<br>SENSOR</button>
+        </div>
+      </div>
     </div>
 
     {{!-- main image panel --}}
-    <div class="col-md-9">
+    <div class="col-md-8">
       <img src="/assets/images/backgrounds/calm-day.png" id="background">
       {{!-- weather details --}}
       {{!-- <p id="forcast">The current conditions in your home zip code:</p> --}}
@@ -24,20 +34,20 @@
       <div class="row">
 
         {{!-- icons --}}
-        <div class="responsive rounded-circle-1">
+        <div class="responsive rounded-circle-1" id="icon">
           <img src="/assets/images/button-icons/air.png">
         </div>
 
-        <div class="responsive rounded-circle-2">
+        <div class="responsive rounded-circle-2"id="icon">
           <img src="/assets/images/button-icons/fire.png">
         </div>
 
-        <div class="responsive rounded-circle-3">
+        <div class="responsive rounded-circle-3"id="icon">
           <img src="/assets/images/button-icons/earth.png">
         </div>
 
         <div class="responsive rounded-circle-4">
-          <img src="/assets/images/button-icons/water.png">
+          <img src="/assets/images/button-icons/water.png"id="icon">
         </div>
       </div>
     </div>
@@ -45,3 +55,5 @@
   </div>
 
 </div>
+
+<script src="/js/moment.js"></script>
