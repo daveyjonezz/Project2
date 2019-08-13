@@ -37,10 +37,7 @@ var API = {
   },
   loginUser: function (user) {
     console.log(user)
-<<<<<<< HEAD
-=======
     // return $.ajax({
->>>>>>> master
     return $.ajax({
       url: "api/users/" + user.email,
       type: "GET",
