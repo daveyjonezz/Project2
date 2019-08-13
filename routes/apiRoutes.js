@@ -35,8 +35,13 @@ module.exports = function(app) {
         }).then(function (dbUser)
          {
 // console.log(err)
+            if (db !== null) {
             console.log("dbUser: ", dbUser)
             res.render("userPage");
+            }
+            else {
+                res.render("404")
+            }
         });
     });
 
