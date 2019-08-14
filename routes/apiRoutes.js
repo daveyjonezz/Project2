@@ -77,11 +77,16 @@ module.exports = function (app) {
         });
     });
 
-    app.get("/send", function (req, res) {
+    app.get("/send/:phoneNum", function (req, res) {
         console.log("hello req.params: ", req.params);
-        console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
+        console.log('#', process.env.TWILIO_NET_PHONE_NUMBER);
+        
+        // process.env.TWILIO_NET_PHONE_NUMBER
+       // console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
+    //    }).then(function (dbUser) {
+    //    console.log(dbUser);
         twilioClient.messages.create({
-            to: process.env.YING_DEST_PHONE_NUMBER,
+            to: `'+1${req.params.phoneNum}'`,
             from: process.env.TWILIO_NET_PHONE_NUMBER,
             body: 'Hello from HORUS, this is the test message for your flooding alert system!'
         }).then(message => {
