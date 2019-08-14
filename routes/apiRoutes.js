@@ -33,10 +33,16 @@ module.exports = function (app) {
             {
                 email: req.params.email
             }
-        }).then(function (dbUser) {
-            // console.log(err)
+        }).then(function (dbUser)
+         {
+// console.log(err)
+            if (db !== null) {
             console.log("dbUser: ", dbUser)
             res.render("userPage");
+            }
+            else {
+                res.render("404")
+            }
         });
     });
 
