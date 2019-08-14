@@ -1,3 +1,35 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+* {
+  box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}  
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -17,42 +49,35 @@ ul {
 #logo {
  float: left; 
  margin: 30px; 
-}
-
-.col-md-3 {
-  padding: 30px;
-}
-
-.col-md-9 {
-margin: 30px;
-}
-
-.background {
-  z-index: ;
+ scale: inherit;
 }
 
 .card {
   background-color: white;
   margin: 25px;
   color: black;
-
+  width: 100%;
+  height: auto;
 }
 
-.rounded-circle-1, .rounded-circle-2, .rounded-circle-3, .rounded-circle-4{
+.img-circle {
   float: left;
   width: 46px;
   height: 46px;
   margin: 10px;
-  border: limegreen;
+  border: limegreen ;
   border-width: 5px;
+  border-radius: 50px;
+  color:red;
+  /* box-shadow: 0 4px 8px 0 rgba(252, 0, 0, 0.6), 0 6px 20px 0 rgba(252, 0, 0, 0.6); */
 }
 
-.rounded-circle-4-red {
+/* .rounded-circle-4-red {
   float: left;
   width: 46px;
   height: 46px;
   box-shadow: 0 4px 8px 0 rgba(252, 0, 0, 0.6), 0 6px 20px 0 rgba(252, 0, 0, 0.6);
- }
+ } */
 
  li {
    font-family: Arial, Helvetica, sans-serif;
@@ -79,3 +104,99 @@ margin: 30px;
    margin-bottom: 10px;
   
  }
+
+
+ ==================
+
+ .list-group-item {
+  line-height: 2.5;
+}
+​
+.modal-icon{
+  padding: 5px;
+}
+​
+.list-group-item {
+  line-height: 2.5;
+}
+​
+ul {
+  margin-left: 10px;
+}
+​
+#logo {
+ float: left; 
+ margin: 30px; 
+}
+​
+.col-md-3 {
+  padding: 30px;
+}
+​
+.col-md-9 {
+margin: 30px;
+}
+​
+.card {
+  background-color: white;
+  margin: 25px;
+  color: black;
+​
+}
+​
+.rounded-circle-1, .rounded-circle-2, .rounded-circle-3, .rounded-circle-4{
+  float: left;
+  width: 46px;
+  height: 46px;
+  margin: 10px;
+  border: limegreen;
+  border-width: 5px;
+}
+​
+.rounded-circle-4-red {
+  float: left;
+  width: 46px;
+  height: 46px;
+  box-shadow: 0 4px 8px 0 rgba(252, 0, 0, 0.6), 0 6px 20px 0 rgba(252, 0, 0, 0.6);
+ }
+​
+ li {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 9pt;
+   color: #1B75BB;
+ }
+​
+ button {
+   border: none;
+   background-color: #1B75BB;
+   font-size: 8pt;
+   color:white;
+   border-radius: 5px;
+   box-align: center;
+   text-align: center;
+   line-height: 11px;
+   padding: 5px;
+ }
+​
+​
+ #background {
+   width: 100%;
+   height: auto;
+   margin-bottom: 10px;
+  
+ }
+​
+ div.loginbox{
+  background-color: aqua;
+  background-image: url("../images/logos/falcontile.png");
+  height: 100vh;
+ }
+​
+ .loginbox a {
+ top: 50%;
+ position: absolute;
+ translate: transformY(-50%);
+ transform: translateY(-50%);
+ }
+​
+​
