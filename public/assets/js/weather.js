@@ -2,8 +2,12 @@
 // Options:
 // search:     location name or zipcode
 // degreeType: F or C
-
-var zipCode = '60046'
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+var zipCode = getCookie("zipCode")
 
 $.get("/api/weather/" + zipCode).then(function(results) {
 

@@ -5,10 +5,12 @@
       <img src="/assets/images/logos/full-logo-tag.png" id="logo" alt="logo and tagline">
       
       <ul>
+
         <li><strong>Client: </strong>{{firstName}} {{lastName}}</li>
         <li><strong>Zip code: </strong>{{location}}</li>
         <li><strong>Email: </strong>{{email}}</li>
         <li><strong>Phone: </strong>{{phoneNum}}</li>
+
       </ul>
       <br>
       <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
@@ -46,8 +48,80 @@
 
         <div class="img-circle-4" id="icon4">
           <img src="/assets/images/button-icons/water.png"id="icon">
+      {{!-- add moment script to control image --}}
+      {{!-- add weather modal to populate  --}}
+      {{!-- weather details --}}
+      {{!-- <p id="forcast">The current conditions in your home zip code:</p> --}}
+
+      <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel7" id="loginTab" role="tab"><i
+                class="fas 
+                fa-user mr-1"></i>
+              Current Weather Conditions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" id="registerTab" href="#panel8" role="tab"><i
+                class="fas fa-user-plus mr-1"></i>
+              Forecast</a>
+          </li>
+        </ul>
+
+        <!-- Tab panels -->
+        <div class="tab-content">
+          <!--Panel 7-->
+          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+          
+
+              <p class="h4 mb-4">Current Weather Conditions:</p>
+
+             <p>Temperature: <span id="currentTemp"></span></p>
+             <p>Conditions: <span id="currentConditions"></span></p>
+             <p>Humidity: <span id="humidity"></span></p>
+             <p>Wind Speed: <span id="wind"></span></p>
+
+         
+
+              
+
+          
+
+          </div>
+          <!-- Default form login -->
+
+          <!-- Default form login -->
+          <!--/.Panel 7-->
+
+          <!--Panel 8-->
+          <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+            
+            <!-- Default form register -->
+            <form class="text-center border border-light p-5" action="#!">
+
+              <p class="h4 mb-4">Future Forcast</p>
+
+
+
+             {{!-- <p>Date:<span id="day"></span>, <span id="date"></p>
+             <p>Temperature: High:<span id="high"></span>,Low:<span id="low"></span></p>
+             <p>Conditions: <span id="dailyConditions"></span></p>
+             <p>Precipitation: <span id ="precip"></span></p> --}}
+
+            
+          </div>
+          <!--/.Panel 8-->
         </div>
-      </div>
     </div>
 
   </div>
