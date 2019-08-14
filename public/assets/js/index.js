@@ -25,7 +25,16 @@ var API = {
       url: "api/users",
       data: JSON.stringify(user),
       success: function (data) {
-        $("body").html(data);
+        if (data === '404') {
+          $("#email").addClass("error")
+          // remove the class after the animation completes
+          setTimeout(function () {
+          $("#email").removeClass("error");
+          }, 300);
+        }
+        else {
+          $("body").html(data);
+        };
       }
     });
   },
@@ -42,8 +51,25 @@ var API = {
       url: "api/users/" + user.email,
       type: "GET",
       success: function (data, textStatus, jqXHR) {
-        $("body").html(data);
+        console.log("DATA SHOULD BE HERE",data)
+        if (data === '404') {
+          $("#emaillogin").addClass("error")
+          // remove the class after the animation completes
+          setTimeout(function () {
+          $("#emaillogin").removeClass("error");
+          }, 300);
+        }
+        else {
+          $("body").html(data);
+        };
       }
+    })
+  },
+  getSendMessage: function () {
+    console.log("hello getSendMessage ");
+    return $.ajax({
+      url: "send/",
+      type: "GET"
     });
   },
   deleteExample: function (id) {
@@ -141,40 +167,51 @@ var handleSignUp = function () {
     });
   };
 }
-  var handleLogin = function () {
-    event.preventDefault();
-    console.log("log in clicked");
-    //************************ */ VERIFY PASSWORD ENTERED = PASSWORD IN DB
-    // if ($("#password").val() !== $("#rep-password").val()) {
-    //   alert("incorrect password entered")
-    // }
-    // else {
-    var user = {
-      email: $("#emaillogin").val(),
-      password: $("#passlogin").val(),
-    }
-    console.log(user);
-    API.loginUser(user)
-    // .then(function (dbUser) 
-    // {
-    //   console.log("we are back from logging in a user: ", dbUser)
-    //   //*********************** */ RENDER NEW PAGE
-    // });
-  };
-
-  var handleToggleSignUp =function(){
-    $("#registerTab").click();
-  };
-
-  var handleToggleLogIn =function(){
-    $("#loginTab").click();
-  };
+var handleLogin = function () {
+  event.preventDefault();
+  console.log("log in clicked from here");
+  var user = {
+    email: $("#emaillogin").val(),
+    password: $("#passlogin").val(),
+  }
+  console.log(user);
+  API.loginUser(user)
+};
 
 
-  // Add event listeners to the submit and delete buttons
-  $submitBtn.on("click", handleFormSubmit);
-  $exampleList.on("click", ".delete", handleDeleteBtnClick);
-  $("#signup").on("click", handleSignUp);
-  $("#login").on("click", handleLogin);
-  $("#register").on("click", handleToggleSignUp);
-  $("#loginAccount").on("click", handleToggleLogIn);
+var handleTest = function () {
+  console.log("hey I am here");
+  API.getSendMessage().then(function (data) {
+    console.log("hello", data);
+  });
+
+}
+
+var handleToggleSignUp = function () {
+  $("#registerTab").click();
+};
+
+var handleToggleLogIn = function () {
+  $("#loginTab").click();
+};
+
+var handleUpdateProfile = function () {
+  console.log("going to update user profile");
+};
+
+var handleFloodingAlert = function () {
+  console.log("handle flooding alert");
+};
+
+
+// Add event listeners to the submit and delete buttons
+$submitBtn.on("click", handleFormSubmit);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$("#signup").on("click", handleSignUp);
+$("#login").on("click", handleLogin);
+$("#register").on("click", handleToggleSignUp);
+$("#loginAccount").on("click", handleToggleLogIn);
+$("#test-send-message").on("click", handleTest);
+$("#update-user-profile").on("click", handleUpdateProfile);
+$("#flooding-alert").on("click", handleFloodingAlert);
+
