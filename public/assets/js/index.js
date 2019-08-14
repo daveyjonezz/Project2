@@ -6,46 +6,64 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-    saveExample: function(example) {
-        return $.ajax({
-            headers: {
-                "Content-Type": "application/json"
-            },
-            type: "POST",
-            url: "api/examples",
-            data: JSON.stringify(example)
-        });
-    },
-    createUser: function(user) {
-        return $.ajax({
-            headers: {
-                "Content-Type": "application/json"
-            },
-            type: "POST",
-            url: "api/users",
-            data: JSON.stringify(user),
-            success: function(data, user) {
-                console.log("userback: ", user)
-                $("body").html(data);
-                $("#zipcode").text(user.location)
-            }
-        });
-    },
-    getExamples: function() {
-        return $.ajax({
-            url: "api/examples",
-            type: "GET"
-        });
-    },
-    loginUser: function(user) {
-        console.log(user)
-            // return $.ajax({
-        return $.ajax({
-            url: "api/users/" + user.email,
-            type: "GET",
-            success: function(data) {
-                $("body").html(data);
-                $("#zipcode").text("94619")
+  saveExample: function (example) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/examples",
+      data: JSON.stringify(example)
+    });
+  },
+  createUser: function (user) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/users",
+      data: JSON.stringify(user),
+      success: function (data) {
+        if (data === '404') {
+          $("#email").addClass("error")
+          // remove the class after the animation completes
+          setTimeout(function () {
+          $("#email").removeClass("error");
+          }, 300);
+        }
+        else {
+          $("body").html(data);
+        };
+      }
+    });
+  },
+  getExamples: function () {
+    return $.ajax({
+      url: "api/examples",
+      type: "GET"
+    });
+  },
+
+  loginUser: function (user) {
+    console.log(user)
+    // return $.ajax({
+    return $.ajax({
+      url: "api/users/" + user.email,
+      type: "GET",
+      success: function (data, textStatus, jqXHR) {
+        
+        console.log("DATA SHOULD BE HERE",data)
+        if (data === '404') {
+          $("#emaillogin").addClass("error")
+          // remove the class after the animation completes
+          setTimeout(function () {
+          $("#emaillogin").removeClass("error");
+          }, 300);
+        }
+        else {
+          $("body").html(data);
+          $("#zipcode").text("94619");
                 $.ajax({
                     url: "api/weather/" + "94619",
                     type: "GET"
@@ -59,8 +77,7 @@ var API = {
                     $("#humidity").text(results[0].current.humidity)
                     $("#wind").text(results[0].current.windspeed)
 
-                    // Forecast
-
+                  
                     var forecast = results[0].forecast;
                     var container = $("#panel8");
 
@@ -77,26 +94,31 @@ var API = {
 
                         var percip = $("<p>").addClass("text-center").text(`CHANCE OF RAIN: ${forecast[i].precip}%`);
                         container.append(percip);
-
-
-                        // $("#high").text(forecast[i].high)
-                        // $("#low").text(forecast[i].low)
-
-
                     }
 
                 })
 
                 $("#modalLRForm").modal("show")
-            }
-        });
-    },
-    deleteExample: function(id) {
-        return $.ajax({
-            url: "api/examples/" + id,
-            type: "DELETE"
-        });
-    }
+        };
+        
+        
+      }
+    })
+  },
+  getSendMessage: function (phoneNum) {
+    console.log("hello getSendMessage ");
+    return $.ajax({
+      url: "/send/" + phoneNum, 
+      type: "GET",
+    });
+  },
+  deleteExample: function (id) {
+    return $.ajax({
+      url: "api/examples/" + id,
+      type: "DELETE"
+    });
+  }
+
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
@@ -185,35 +207,45 @@ var handleSignUp = function() {
         });
     };
 }
-var handleLogin = function() {
-    event.preventDefault();
-    console.log("log in clicked");
-    //************************ */ VERIFY PASSWORD ENTERED = PASSWORD IN DB
-    // if ($("#password").val() !== $("#rep-password").val()) {
-    //   alert("incorrect password entered")
-    // }
-    // else {
-    var user = {
-        email: $("#emaillogin").val(),
-        password: $("#passlogin").val(),
-    }
-    console.log(user);
-    API.loginUser(user)
-        // .then(function (dbUser) 
-        // {
-        //   console.log("we are back from logging in a user: ", dbUser)
-        //   //*********************** */ RENDER NEW PAGE
-        // });
+
+var handleLogin = function () {
+  event.preventDefault();
+  console.log("log in clicked from here");
+  var user = {
+    email: $("#emaillogin").val(),
+    password: $("#passlogin").val(),
+  }
+  console.log(user);
+  API.loginUser(user)
 };
 
-var handleToggleSignUp = function() {
-    $("#registerTab").click();
+
+var handleTest = function () {
+  var phoneNumToCall = $(this)
+    // .parent()
+    .attr("data-id");
+  console.log(phoneNumToCall);
+  API.getSendMessage(phoneNumToCall).then(function (data) {
+    console.log("hello", data);
+  });
+
+}
+
+var handleToggleSignUp = function () {
+  $("#registerTab").click();
 };
 
-var handleToggleLogIn = function() {
-    $("#loginTab").click();
+var handleToggleLogIn = function () {
+  $("#loginTab").click();
 };
 
+var handleUpdateProfile = function () {
+  console.log("going to update user profile");
+};
+
+var handleFloodingAlert = function () {
+  console.log("handle flooding alert");
+};
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
@@ -222,3 +254,7 @@ $("#signup").on("click", handleSignUp);
 $("#login").on("click", handleLogin);
 $("#register").on("click", handleToggleSignUp);
 $("#loginAccount").on("click", handleToggleLogIn);
+$("#test-send-message").on("click", handleTest);
+$("#update-user-profile").on("click", handleUpdateProfile);
+$("#flooding-alert").on("click", handleFloodingAlert);
+
