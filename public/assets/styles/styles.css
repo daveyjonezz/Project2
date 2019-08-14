@@ -37,13 +37,6 @@ ul {
  margin: 30px; 
 }
 
-.col-md-3 {
-  padding: 30px;
-}
-
-.col-md-9 {
-margin: 30px;
-}
 
 .card {
   background-color: white;
@@ -61,8 +54,7 @@ margin: 30px;
   border: limegreen ;
   border-width: 5px;
   border-radius: 50px;
-  color:red;
-  /* box-shadow: 0 4px 8px 0 rgba(252, 0, 0, 0.6), 0 6px 20px 0 rgba(252, 0, 0, 0.6); */
+    /* box-shadow: 0 4px 8px 0 rgba(252, 0, 0, 0.6), 0 6px 20px 0 rgba(252, 0, 0, 0.6); */
 }
 
  li {
