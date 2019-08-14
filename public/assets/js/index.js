@@ -42,9 +42,19 @@ var API = {
       url: "api/users/" + user.email,
       type: "GET",
       success: function (data, textStatus, jqXHR) {
-        $("body").html(data);
+        console.log("DATA SHOULD BE HERE",data)
+        if (data === '404') {
+          $("#emaillogin").addClass("error")
+          // remove the class after the animation completes
+          setTimeout(function () {
+          $("#emaillogin").removeClass("error");
+          }, 300);
+        }
+        else {
+          $("body").html(data);
+        };
       }
-    });
+    })
   },
   getSendMessage: function () {
     console.log("hello getSendMessage ");
@@ -162,7 +172,6 @@ var handleLogin = function () {
   }
   console.log(user);
   API.loginUser(user)
- 
 };
 
 
@@ -201,3 +210,4 @@ $("#loginAccount").on("click", handleToggleLogIn);
 $("#test-send-message").on("click", handleTest);
 $("#update-user-profile").on("click", handleUpdateProfile);
 $("#flooding-alert").on("click", handleFloodingAlert);
+
