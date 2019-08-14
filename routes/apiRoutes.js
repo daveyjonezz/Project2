@@ -19,24 +19,29 @@ module.exports = function(app) {
     app.post("/api/users", function(req, res) {
         console.log(req.body)
         db.User.create(req.body).then(function(dbUser) {
+            res.cookie("zipCode", dbUser.location)
             res.render("userPage");
         });
     });
 
     app.get("/api/users/:email", function(req, res) {
         console.log("req.params: ", req.params)
-        // db.User.findAll
-        // (
+            // db.User.findAll
+            // (
         db.User.findOne({
-        where: 
-            {
+            where: {
                 email: req.params.email
             }
-        }).then(function (dbUser)
-         {
-// console.log(err)
+        }).then(function(dbUser) {
+            // console.log(err)
             console.log("dbUser: ", dbUser)
-            res.render("userPage");
+                // create a cookie with the user info (name,email, location)
+                // object with user info
+
+            console.log("user login : ", dbUser)
+            res.cookie("zipCode", dbUser.location)
+            console.log(dbUser.location)
+            res.render("userPage", dbUser);
         });
     });
 
@@ -48,6 +53,7 @@ module.exports = function(app) {
     });
 
     app.get("/api/weather/:zipcode", function(req, res) {
+        // we can get the zipcode from the cookie
 
         weather.find({ search: req.params.zipcode, degreeType: 'F' }, function(err, result) {
             if (err) console.log(err);

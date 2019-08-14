@@ -6,142 +6,186 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function (example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  createUser: function (user) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/users",
-      data: JSON.stringify(user),
-      success: function (data) {
-        $("body").html(data);
-      }
-    });
-  },
-  getExamples: function () {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  loginUser: function (user) {
-    console.log(user)
-    // return $.ajax({
-    return $.ajax({
-      url: "api/users/" + user.email,
-      type: "GET",
-      success: function (data, textStatus, jqXHR) {
-        $("body").html(data);
-      }
-    });
-  },
-  deleteExample: function (id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
+    saveExample: function(example) {
+        return $.ajax({
+            headers: {
+                "Content-Type": "application/json"
+            },
+            type: "POST",
+            url: "api/examples",
+            data: JSON.stringify(example)
+        });
+    },
+    createUser: function(user) {
+        return $.ajax({
+            headers: {
+                "Content-Type": "application/json"
+            },
+            type: "POST",
+            url: "api/users",
+            data: JSON.stringify(user),
+            success: function(data, user) {
+                console.log("userback: ", user)
+                $("body").html(data);
+                $("#zipcode").text(user.location)
+            }
+        });
+    },
+    getExamples: function() {
+        return $.ajax({
+            url: "api/examples",
+            type: "GET"
+        });
+    },
+    loginUser: function(user) {
+        console.log(user)
+            // return $.ajax({
+        return $.ajax({
+            url: "api/users/" + user.email,
+            type: "GET",
+            success: function(data) {
+                $("body").html(data);
+                $("#zipcode").text("94619")
+                $.ajax({
+                    url: "api/weather/" + "94619",
+                    type: "GET"
+                }).then(function(results) {
+                    console.log(results)
+
+                    console.log(results[0].current.temperature)
+
+                    $("#currentTemp").text(results[0].current.temperature)
+                    $("#currentConditions").text(results[0].current.skytext)
+                    $("#humidity").text(results[0].current.humidity)
+                    $("#wind").text(results[0].current.windspeed)
+
+                    // Forecast
+
+                    var forecast = results[0].forecast;
+                    var container = $("#panel8");
+
+                    for (i = 0; i < forecast.length; i++) {
+
+                        console.log(forecast[i]);
+
+                        // $("#day").text(forecast[i].day)
+                        var day = $("<p>").addClass("text-center").text("DAY: ").append(forecast[i].day + ", " + forecast[i].date);
+                        container.append(day);
+
+                        var temp = $("<p>").addClass("text-center").text("HIGH: ").append(forecast[i].high + " LOW: ").append(forecast[i].low);
+                        container.append(temp);
+
+                        var percip = $("<p>").addClass("text-center").text(`CHANCE OF RAIN: ${forecast[i].precip}%`);
+                        container.append(percip);
+
+
+                        // $("#high").text(forecast[i].high)
+                        // $("#low").text(forecast[i].low)
+
+
+                    }
+
+                })
+
+                $("#modalLRForm").modal("show")
+            }
+        });
+    },
+    deleteExample: function(id) {
+        return $.ajax({
+            url: "api/examples/" + id,
+            type: "DELETE"
+        });
+    }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function () {
-  API.getExamples().then(function (data) {
-    var $examples = data.map(function (example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+var refreshExamples = function() {
+    API.getExamples().then(function(data) {
+        var $examples = data.map(function(example) {
+            var $a = $("<a>")
+                .text(example.text)
+                .attr("href", "/example/" + example.id);
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+            var $li = $("<li>")
+                .attr({
+                    class: "list-group-item",
+                    "data-id": example.id
+                })
+                .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+            var $button = $("<button>")
+                .addClass("btn btn-danger float-right delete")
+                .text("ｘ");
 
-      $li.append($button);
+            $li.append($button);
 
-      return $li;
+            return $li;
+        });
+
+        $exampleList.empty();
+        $exampleList.append($examples);
     });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
 };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function (event) {
-  event.preventDefault();
+var handleFormSubmit = function(event) {
+    event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+    var example = {
+        text: $exampleText.val().trim(),
+        description: $exampleDescription.val().trim()
+    };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+    if (!(example.text && example.description)) {
+        alert("You must enter an example text and description!");
+        return;
+    }
 
-  API.saveExample(example).then(function () {
-    refreshExamples();
-  });
+    API.saveExample(example).then(function() {
+        refreshExamples();
+    });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+    $exampleText.val("");
+    $exampleDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+var handleDeleteBtnClick = function() {
+    var idToDelete = $(this)
+        .parent()
+        .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function () {
-    refreshExamples();
-  });
+    API.deleteExample(idToDelete).then(function() {
+        refreshExamples();
+    });
 };
 
-var handleSignUp = function () {
-  event.preventDefault();
-  console.log("sign up clicked");
+var handleSignUp = function() {
+    event.preventDefault();
+    console.log("sign up clicked");
 
-  if ($("#password").val() !== $("#rep-password").val()) {
-    alert("password is not the same")
-  }
-  else {
-    var user = {
-      firstName: $("#firstName").val(),
-      lastName: $("#lastName").val(),
-      password: $("#password").val(),
-      email: $("#email").val(),
-      phoneNum: $("#phoneNum").val(),
-      location: $("#location").val(),
-      consent: $('#check1').is(':checked'),
-    }
-    console.log(user);
-    API.createUser(user).then(function () {
-      console.log("we are back from registering a new user")
-    });
-  };
+    if ($("#password").val() !== $("#rep-password").val()) {
+        alert("password is not the same")
+    } else {
+        var user = {
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+            password: $("#password").val(),
+            email: $("#email").val(),
+            phoneNum: $("#phoneNum").val(),
+            location: $("#location").val(),
+            consent: $('#check1').is(':checked'),
+        }
+        console.log(user);
+        API.createUser(user).then(function() {
+            console.log("we are back from registering a new user")
+        });
+    };
 }
-  var handleLogin = function () {
+var handleLogin = function() {
     event.preventDefault();
     console.log("log in clicked");
     //************************ */ VERIFY PASSWORD ENTERED = PASSWORD IN DB
@@ -150,31 +194,31 @@ var handleSignUp = function () {
     // }
     // else {
     var user = {
-      email: $("#emaillogin").val(),
-      password: $("#passlogin").val(),
+        email: $("#emaillogin").val(),
+        password: $("#passlogin").val(),
     }
     console.log(user);
     API.loginUser(user)
-    // .then(function (dbUser) 
-    // {
-    //   console.log("we are back from logging in a user: ", dbUser)
-    //   //*********************** */ RENDER NEW PAGE
-    // });
-  };
+        // .then(function (dbUser) 
+        // {
+        //   console.log("we are back from logging in a user: ", dbUser)
+        //   //*********************** */ RENDER NEW PAGE
+        // });
+};
 
-  var handleToggleSignUp =function(){
+var handleToggleSignUp = function() {
     $("#registerTab").click();
-  };
+};
 
-  var handleToggleLogIn =function(){
+var handleToggleLogIn = function() {
     $("#loginTab").click();
-  };
+};
 
 
-  // Add event listeners to the submit and delete buttons
-  $submitBtn.on("click", handleFormSubmit);
-  $exampleList.on("click", ".delete", handleDeleteBtnClick);
-  $("#signup").on("click", handleSignUp);
-  $("#login").on("click", handleLogin);
-  $("#register").on("click", handleToggleSignUp);
-  $("#loginAccount").on("click", handleToggleLogIn);
+// Add event listeners to the submit and delete buttons
+$submitBtn.on("click", handleFormSubmit);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$("#signup").on("click", handleSignUp);
+$("#login").on("click", handleLogin);
+$("#register").on("click", handleToggleSignUp);
+$("#loginAccount").on("click", handleToggleLogIn);
