@@ -51,7 +51,7 @@ Horus is an alarm monitoring application to provide the user with real time moni
 **[Twilio](https://www.twilio.com/docs/iam/api)
 
 # Text message:
-**[Text Message](./public/assets/images/textMsgFromHorus.PNG)
+![TextMessage1](./public/assets/images/textMsgFromHorus.PNG)
 
 
 ## Contributors
