@@ -1,5 +1,5 @@
 
-![logo](../images/logos/logo.png)
+![logo](public/assets/images/logos/logo.png)
 
 
 
@@ -10,7 +10,7 @@ Horus is an alarm monitoring application to provide the user with real time moni
 
 ## Usage:
 
-![Flow](../images/flow.png)
+![Flow](public/assets/images/flow.png)
 
 
 ## Hardware Requirements:
@@ -49,6 +49,10 @@ Horus is an alarm monitoring application to provide the user with real time moni
 # API's:
 
 **[Twilio](https://www.twilio.com/docs/iam/api)
+
+# Text message:
+**[Text Message](public/assets/images/textMsgFromHorus.PNG)
+
 
 ## Contributors
 **[Davis](https://github.com/daveyjonezz)
