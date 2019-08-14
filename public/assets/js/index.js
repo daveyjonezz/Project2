@@ -65,11 +65,11 @@ var API = {
       }
     })
   },
-  getSendMessage: function () {
+  getSendMessage: function (phoneNum) {
     console.log("hello getSendMessage ");
     return $.ajax({
-      url: "send/",
-      type: "GET"
+      url: "/send/" + phoneNum, 
+      type: "GET",
     });
   },
   deleteExample: function (id) {
@@ -180,8 +180,11 @@ var handleLogin = function () {
 
 
 var handleTest = function () {
-  console.log("hey I am here");
-  API.getSendMessage().then(function (data) {
+  var phoneNumToCall = $(this)
+    // .parent()
+    .attr("data-id");
+  console.log(phoneNumToCall);
+  API.getSendMessage(phoneNumToCall).then(function (data) {
     console.log("hello", data);
   });
 
