@@ -17,17 +17,31 @@ module.exports = function (app) {
         });
     });
 
+    // register new user
     app.post("/api/users", function (req, res) {
         console.log(req.body)
-        db.User.create(req.body).then(function(dbUser) {
-            res.render("userPage" , dbUser.dataValues);
+        console.log(req.body.email)
+        db.User.findOne({
+            where:
+            {
+                email: req.body.email
+            }
+        }).then(function (existingUser) {
+            if(!existingUser){
+                console.log('user NOT exists'); 
+                db.User.create(req.body).then(function(dbUser) {
+                    res.render("userPage" , dbUser.dataValues);
+                });
+            }
+            else{
+                console.log('user DOES exists'); 
+                res.send("404")
+            }
         });
     });
-
+    // Login User
     app.get("/api/users/:email", function (req, res) {
         console.log("req.params: ", req.params)
-        // db.User.findAll
-        // (
         db.User.findOne({
             where:
             {
@@ -35,7 +49,6 @@ module.exports = function (app) {
             }
         }).then(function (dbUser)
          {
-// console.log(err)
             if (dbUser !== null) {
             console.log('=========================');
             console.log(dbUser.dataValues)
@@ -66,12 +79,6 @@ module.exports = function (app) {
 
     app.get("/send", function (req, res) {
         console.log("hello req.params: ", req.params);
-        // db.User.findOne({
-        //     where: {
-        //         email: req.params.email
-        //     }
-        // }).then(function (dbUser) {
-        // console.log(dbUser);
         console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
         twilioClient.messages.create({
             to: process.env.YING_DEST_PHONE_NUMBER,
@@ -82,5 +89,4 @@ module.exports = function (app) {
             res.json(message.sid)
         });
     });
-    // });
 }
