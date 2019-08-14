@@ -64,6 +64,7 @@ var API = {
         else {
           $("body").html(data);
           $("#zipcode").text("94619");
+
                 $.ajax({
                     url: "api/weather/" + "94619",
                     type: "GET"
@@ -84,16 +85,17 @@ var API = {
                     for (i = 0; i < forecast.length; i++) {
 
                         console.log(forecast[i]);
+                         var dayweather = `<p><strong>${forecast[i].day}:</strong></p><p>HIGH: ${forecast[i].high}, LOW: ${forecast[i].low}</p> <p>CHANCE OF RAIN: ${forecast[i].precip}%</p>`
 
                         // $("#day").text(forecast[i].day)
                         var day = $("<p>").addClass("text-center").text("DAY: ").append(forecast[i].day + ", " + forecast[i].date);
-                        container.append(day);
+                        //container.append(day);
 
                         var temp = $("<p>").addClass("text-center").text("HIGH: ").append(forecast[i].high + " LOW: ").append(forecast[i].low);
-                        container.append(temp);
+                        //container.append(temp);
 
-                        var percip = $("<p>").addClass("text-center").text(`CHANCE OF RAIN: ${forecast[i].precip}%`);
-                        container.append(percip);
+                        var precip = $("<p>").addClass("text-center").text(`CHANCE OF RAIN: ${forecast[i].precip}%`);
+                        container.append(dayweather);
                     }
 
                 })
