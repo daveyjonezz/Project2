@@ -1,13 +1,9 @@
 <div class="container">
-
-<div class="row">
-  <div class="col-md-4">
-      <img src="/assets/images/logos/full-logo-tag.png" id="logo" alt="logo and tagline">    
-  </div>
-</div>
   {{!-- logo panel --}}
   <div class="row">
     <div class="col-md-4">
+      <img src="/assets/images/logos/full-logo-tag.png" id="logo" alt="logo and tagline">
+      
       <ul>
 
         <li><strong>Client: </strong>{{firstName}} {{lastName}}</li>
@@ -34,6 +30,24 @@
     {{!-- main image panel --}}
     <div class="col-md-8">
       <img src="/assets/images/backgrounds/calm-day.png" id="background">
+      <br>
+      <div class="row">
+
+        {{!-- icons --}}
+        <div class="img-circle" id="icon1">
+          <img src="/assets/images/button-icons/air.png">
+        </div>
+
+        <div class="img-circle" id="icon2">
+          <img src="/assets/images/button-icons/fire.png">
+        </div>
+
+        <div class="img-circle" id="icon3">
+          <img src="/assets/images/button-icons/earth.png">
+        </div>
+
+        <div class="img-circle" id="icon4">
+          <img src="/assets/images/button-icons/water.png"id="icon">
       {{!-- add moment script to control image --}}
       {{!-- add weather modal to populate  --}}
       {{!-- weather details --}}
@@ -114,4 +128,4 @@
 
 </div>
 
-{{!-- <script src="/js/moment.js"></script> --}}
+<script src="/js/moment.js"></script>
