@@ -25,7 +25,16 @@ var API = {
       url: "api/users",
       data: JSON.stringify(user),
       success: function (data) {
-        $("body").html(data);
+        if (data === '404') {
+          $("#email").addClass("error")
+          // remove the class after the animation completes
+          setTimeout(function () {
+          $("#email").removeClass("error");
+          }, 300);
+        }
+        else {
+          $("body").html(data);
+        };
       }
     });
   },
@@ -161,11 +170,6 @@ var handleSignUp = function () {
 var handleLogin = function () {
   event.preventDefault();
   console.log("log in clicked from here");
-  //************************ */ VERIFY PASSWORD ENTERED = PASSWORD IN DB
-  // if ($("#password").val() !== $("#rep-password").val()) {
-  //   alert("incorrect password entered")
-  // }
-  // else {
   var user = {
     email: $("#emaillogin").val(),
     password: $("#passlogin").val(),
