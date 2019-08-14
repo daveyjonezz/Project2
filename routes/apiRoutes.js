@@ -19,7 +19,7 @@ module.exports = function(app) {
     app.post("/api/users", function(req, res) {
         console.log(req.body)
         db.User.create(req.body).then(function(dbUser) {
-            res.render("userPage");
+            res.render("userPage" , dbUser.dataValues);
         });
     });
 
@@ -35,12 +35,15 @@ module.exports = function(app) {
         }).then(function (dbUser)
          {
 // console.log(err)
-            if (db !== null) {
-            console.log("dbUser: ", dbUser)
-            res.render("userPage");
+            if (dbUser !== null) {
+            console.log('=========================');
+            console.log(dbUser.dataValues)
+            console.log('=========================');
+            res.render("userPage", dbUser.dataValues);
             }
             else {
-                res.render("404")
+                console.log("HEY",dbUser)
+                res.send("404")
             }
         });
     });
