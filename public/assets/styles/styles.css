@@ -27,10 +27,6 @@ ul {
 margin: 30px;
 }
 
-.background {
-  z-index: 0;
-}
-
 .card {
   background-color: white;
   margin: 25px;
@@ -79,7 +75,6 @@ margin: 30px;
    margin-bottom: 10px;
   
  }
-
  .error {
   position: relative;
   animation: shake .1s linear;
@@ -103,3 +98,16 @@ margin: 30px;
       transform: translate3d(4px, 0, 0);
     }
 }
+
+ div.loginbox{
+  background-color: aqua;
+  background-image: url("../images/logos/falcontile.png");
+  height: 100vh;
+ }
+
+ .loginbox a {
+ top: 50%;
+ position: absolute;
+ translate: transformY(-50%);
+ transform: translateY(-50%);
+ }
