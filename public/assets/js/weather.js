@@ -15,7 +15,7 @@ $.get("/api/weather/" + zipCode).then(function(results) {
 
     console.log(results[0].current.skytext)
 
-    $("#forcast").text(JSON.stringify(results))
+    $("#forecast").text(JSON.stringify(results))
 })
 
 
