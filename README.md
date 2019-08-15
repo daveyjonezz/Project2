@@ -3,13 +3,24 @@
 
 
 
-# HORUS: Keeping An Eye On Your Home
+# Horus:
+## Keeping an eye on your home.
 
-Horus is a sensor-based home monitoring application. It provides the user with real-time monitoring utilizing various inputs from your home through remote senors, eg water, gas, motion, temperature. In the event that a sensnor is triggered, an API is utilized to notify the registered user. From the dashboard application, the user can check the status, test, or reset the sensors. Additionally, a weather feed is provided to the user for predictive action at their discretion.
+Horus is an alarm monitoring application to provide the user with real time monitoring utilizing various inputs from your home - ie. water sensors, smoke detectors along with APIs that will notifiy you of potential adverse weather and natural events.
 
 ## Usage:
 
 ![Flow](./public/assets/images/Flow.PNG)
+
+
+## Hardware Requirements:
+
+- Raspberry Pi 3B
+- Bread Board with GPIO breakout 
+- Jumper Wires
+- Water Sensor with DAC circuit
+- PIR Sensor
+- IR Flame Sensor
 
 
 
@@ -23,48 +34,37 @@ Horus is a sensor-based home monitoring application. It provides the user with r
 - javaScript
 - jQuery
 - Handlebars
+- Python
 
 # Back End:
-
 - Node
 - Express
 
 
 # npm packages:
 
-**[moment.js](https://momentjs.com/)
-**[weather.js](https://www.npmjs.com/package/weather-js)
-**[mocha](https://www.npmjs.com/package/mocha)
-**[chai](https://www.npmjs.com/package/chai)
-
+[moment.js](https://momentjs.com/)
+[weather.js](https://www.npmjs.com/package/weather-js)
+[cookie-parser](https://www.npmjs.com/package/cookie-parser)
+[mocha](https://www.npmjs.com/package/mocha)
+[chia](https://www.npmjs.com/package/chai)
 
 # API's:
 
-**[Twilio](https://www.twilio.com/docs/iam/api)
-
-
-# Additional Goodies:
-
-- Python
-- php
-- Adobe Creative Cloud: Illustrator, Photoshop
-
-
-## Hardware Requirements:
-
-- Raspberry Pi 3B
-- Bread Board with GPIO breakout 
-- Jumper Wires
-- Water Sensor with DAC circuit
-
+[Twilio](https://www.twilio.com/docs/iam/api)
 
 ## Contributors
-**[Davis](https://github.com/daveyjonezz)
-**[Jenny](https://github.com/jenshin75)
-**[Madeleine](https://github.com/MadeleineKemeny)
-**[Mari](https://github.com/Mari0203)
-**[Susan](https://github.com/Sooze16)
-**[Ying](https://github.com/yzhouyzhou)
+[Davis](https://github.com/daveyjonezz)
+[Jenny](https://github.com/jenshin75)
+[Madeleine](https://github.com/MadeleineKemeny)
+[Mari](https://github.com/Mari0203)
+[Susan](https://github.com/Sooze16)
+[Ying](https://github.com/yzhouyzhou)
+
+#Acknowledgements:
+[Piddler In the Root](https://www.piddlerintheroot.com/)
+*Tutorials and python code can be found here for the RPi sensors.
+
 
 
 
