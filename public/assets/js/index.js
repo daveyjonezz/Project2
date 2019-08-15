@@ -1,3 +1,5 @@
+//var weather = require('moment-js');
+
 // Get references to page elements.
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
@@ -63,10 +65,10 @@ var API = {
         }
         else {
           $("body").html(data);
-          $("#zipcode").text("94619");
+          $("#zipcode").text("60202");
 
                 $.ajax({
-                    url: "api/weather/" + "94619",
+                    url: "api/weather/" + "60202",
                     type: "GET"
                 }).then(function(results) {
                     console.log(results)
@@ -85,7 +87,7 @@ var API = {
                     for (i = 0; i < forecast.length; i++) {
 
                         console.log(forecast[i]);
-                         var dayweather = `<p><strong>${forecast[i].day}:</strong></p><p>HIGH: ${forecast[i].high}, LOW: ${forecast[i].low}</p> <p>CHANCE OF RAIN: ${forecast[i].precip}%</p>`
+                         var dayweather = `<p><strong>${forecast[i].day}:</strong></p><p>HIGH: ${forecast[i].high}F, LOW: ${forecast[i].low}F</p> <p>CHANCE OF RAIN: ${forecast[i].precip}%</p>`
 
                         // $("#day").text(forecast[i].day)
                         var day = $("<p>").addClass("text-center").text("DAY: ").append(forecast[i].day + ", " + forecast[i].date);

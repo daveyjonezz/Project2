@@ -1,6 +1,4 @@
-
 ![logo](./public/assets/images/logos/logo.png)
-
 
 
 # Horus:
@@ -22,8 +20,6 @@ Horus is an alarm monitoring application to provide the user with real time moni
 - PIR Sensor
 - IR Flame Sensor
 
-
-
 ## Software Requirements:
 
 # Front End:
@@ -41,13 +37,12 @@ Horus is an alarm monitoring application to provide the user with real time moni
 - Express
 
 
-# npm packages:
-
 [moment.js](https://momentjs.com/)
 [weather.js](https://www.npmjs.com/package/weather-js)
 [cookie-parser](https://www.npmjs.com/package/cookie-parser)
 [mocha](https://www.npmjs.com/package/mocha)
 [chia](https://www.npmjs.com/package/chai)
+
 
 # API's:
 
@@ -61,18 +56,8 @@ Horus is an alarm monitoring application to provide the user with real time moni
 [Susan](https://github.com/Sooze16)
 [Ying](https://github.com/yzhouyzhou)
 
+
 #Acknowledgements:
 [Piddler In the Root](https://www.piddlerintheroot.com/)
 *Tutorials and python code can be found here for the RPi sensors.
-
-
-
-
-
-
-
-
-
-
-
 
