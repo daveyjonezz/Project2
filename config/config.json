@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "lt5hfsavd9vkpnzm",
-        "password": "p08mt4ynpo46g1vy",
-        "database": "xgac8qksj3ijdpb4",
-        "host": "gx97kbnhgjzh3efb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        "username": "ying",
+        "password": "12345678",
+        "database": "exampledb",
+        "host": "localhost",
         "dialect": "mysql"
     },
     "test": {
