@@ -8,7 +8,7 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-// Middleware
+// Middleware 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -50,4 +50,3 @@ db.sequelize.sync().then(function() {
 
 
 module.exports = app;
-
