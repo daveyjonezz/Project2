@@ -67,55 +67,30 @@
 - Handlebars
 
 
-### API's:
+### API:
 
 - [Twilio](https://www.twilio.com/docs/iam/api)
 
 
 ### EXTRA GOODIES THAT MAKE IT HAPPEN:
 
-
-## API's:
-- [Twilio](https://www.twilio.com/docs/iam/api)
-
-
-## Contributors
-- [Davis](https://github.com/daveyjonezz)
-- [Jenny](https://github.com/jenshin75)
-- [Madeleine](https://github.com/MadeleineKemeny)
-- [Mari] (https://github.com/Mari0203)
-- [Susan](https://github.com/Sooze16)
-- [Ying](https://github.com/yzhouyzhou)
-
-
-## Acknowledgements
-[Piddler In the Root](https://www.piddlerintheroot.com/
-*Tutorials and python code can be found here for the RPi sensors.*
-
-[Raspberry Pi Documentation] (https://www.raspberrypi.org/documentation/)
-[Python Standard Library] (https://docs.python.org/3/library/)
-
-
-## Notes
-![alt text](public/assets/images/mySQLworkbench.jpg)
-
-- Raspberry Pi 3B
-- Bread Board with GPIO breakout 
-- Jumper Wires
-- Water Sensor with DAC circuit
-- PIR Sensor
-- IR Flame Sensor
-- Adobe Creative Cloud: Photoshop, Illustrator
+- [Raspberry Pi Documentation] (https://www.raspberrypi.org/documentation/)
+- [Python Standard Library] (https://docs.python.org/3/library/)
+- Adobe Creative Cloud: Photoshop and Illustrator
 
 
 ## Contributors
-
 - [Davis](https://github.com/daveyjonezz)
 - [Jenny](https://github.com/jenshin75)
 - [Madeleine](https://github.com/MadeleineKemeny)
 - [Mari](https://github.com/Mari0203)
 - [Susan](https://github.com/Sooze16)
 - [Ying](https://github.com/yzhouyzhou)
+
+
+## Notes
+![alt text](public/assets/images/mySQLworkbench.jpg)
+
 
 
 ## Acknowledgements:
