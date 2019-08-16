@@ -79,7 +79,7 @@ ul {
   box-shadow: 0 4px 4px 0 rgba(0, 252, 0, 0.6), 0 6px 20px 0 rgba(0, 252, 0, 0.6);
 }
 
-.img-circle:hover {
+.status {
   float: left;
   width: 46px;
   height: 46px;

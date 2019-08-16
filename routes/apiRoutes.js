@@ -28,15 +28,15 @@ module.exports = function (app) {
                 email: req.body.email
             }
         }).then(function (existingUser) {
-            if(!existingUser){
-                console.log('user NOT exists'); 
-                db.User.create(req.body).then(function(dbUser) {
+            if (!existingUser) {
+                console.log('user NOT exists');
+                db.User.create(req.body).then(function (dbUser) {
                     res.cookie("zipCode", dbUser.location)
-                    res.render("userPage" , dbUser.dataValues);
+                    res.render("userPage", dbUser.dataValues);
                 });
             }
-            else{
-                console.log('user DOES exists'); 
+            else {
+                console.log('user DOES exists');
                 res.send("404")
             }
         });
@@ -50,17 +50,16 @@ module.exports = function (app) {
             {
                 email: req.params.email
             }
-        }).then(function (dbUser)
-         {
+        }).then(function (dbUser) {
             if (dbUser !== null) {
-            console.log('=========================');
-            console.log(dbUser.dataValues)
-            console.log('=========================');
-            res.cookie("zipCode", dbUser.location);
-            res.render("userPage", dbUser.dataValues);
+                console.log('=========================');
+                console.log(dbUser.dataValues)
+                console.log('=========================');
+                res.cookie("zipCode", dbUser.location);
+                res.render("userPage", dbUser.dataValues);
             }
             else {
-                console.log("HEY",dbUser)
+                console.log("HEY", dbUser)
                 res.send("404")
             }
         });
@@ -73,7 +72,7 @@ module.exports = function (app) {
         });
     });
 
-    app.get("/api/weather/:zipcode", function(req, res) {
+    app.get("/api/weather/:zipcode", function (req, res) {
         // we can get the zipcode from the cookie
 
 
@@ -86,11 +85,11 @@ module.exports = function (app) {
     app.get("/send/:phoneNum", function (req, res) {
         console.log("hello req.params: ", req.params);
         console.log('#', process.env.TWILIO_NET_PHONE_NUMBER);
-        
+
         // process.env.TWILIO_NET_PHONE_NUMBER
-       // console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
-    //    }).then(function (dbUser) {
-    //    console.log(dbUser);
+        // console.log("hello twilio ", process.env.YING_DEST_PHONE_NUMBER, process.env.TWILIO_NET_PHONE_NUMBER)
+        //    }).then(function (dbUser) {
+        //    console.log(dbUser);
         twilioClient.messages.create({
             to: `'+1${req.params.phoneNum}'`,
             from: process.env.TWILIO_NET_PHONE_NUMBER,
@@ -100,4 +99,27 @@ module.exports = function (app) {
             res.json(message.sid)
         });
     });
+
+    // ROUTES FOR SENSOR DATA FROM RPI:
+    app.get("/api/sensor", function (req, res) {
+        db.Sensor.findAll({
+            limit: 1,
+            where: {
+                sensorType: "flame"
+                //your where conditions, or without them if you need ANY entry
+            },
+            order: [['createdAt', 'DESC']]
+        }).then(function (dbExamples) {
+            res.json(dbExamples);
+        });
+    });
+    
+
+    // Clears sensor output record
+    app.delete("/api/sensor/clear", function (req, res) {
+        db.Sensor.destroy({}).then(function (dbExample) {
+            res.json(dbExample);
+        });
+    });
+
 }

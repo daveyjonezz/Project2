@@ -121,6 +121,23 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+  testSensor: function(){
+  return $.ajax({
+    url: "/api/sensor",
+    type: "GET",
+    success: function (data){
+      if (data[0].sensorStatus === true) {
+        $(".fire").removeClass("img-circle")
+        $(".fire").addClass("status")
+        console.log(data)
+      }
+      else {
+        console.log("no fire")
+        $(".fire").addClass("img-circle")
+      }
+    }
+  })
   }
 
 };
@@ -235,6 +252,12 @@ var handleTest = function () {
 
 }
 
+var handleSensor = function () {
+API.testSensor().then(function(data){
+console.log("hello",data)
+})
+}
+
 var handleToggleSignUp = function () {
   $("#registerTab").click();
 };
@@ -261,4 +284,4 @@ $("#loginAccount").on("click", handleToggleLogIn);
 $("#test-send-message").on("click", handleTest);
 $("#update-user-profile").on("click", handleUpdateProfile);
 $("#flooding-alert").on("click", handleFloodingAlert);
-
+$("#test-sensors").on("click", handleSensor)
