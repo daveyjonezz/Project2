@@ -81,8 +81,43 @@ var API = {
                         $("#wind").text(results[0].current.windspeed)
 
 
-
-
+                $("#modalLRForm").modal("show")
+        };
+        
+        
+      }
+    })
+  },
+  getSendMessage: function (phoneNum) {
+    console.log("hello getSendMessage ");
+    return $.ajax({
+      url: "/send/" + phoneNum, 
+      type: "GET",
+    });
+  },
+  deleteExample: function (id) {
+    return $.ajax({
+      url: "api/examples/" + id,
+      type: "DELETE"
+    });
+  },
+  testSensor: function(){
+  return $.ajax({
+    url: "/api/sensor",
+    type: "GET",
+    success: function (data){
+      if (data[0].sensorStatus === true) {
+        $(".fire").removeClass("img-circle")
+        $(".fire").addClass("status")
+        console.log(data)
+      }
+      else {
+        console.log("no fire")
+        $(".fire").addClass("img-circle")
+      }
+    }
+  })
+  }
                         var forecast = results[0].forecast;
                         var container = $("#panel8");
 
@@ -112,19 +147,6 @@ var API = {
             }
         })
     },
-    getSendMessage: function(phoneNum) {
-        console.log("hello getSendMessage ");
-        return $.ajax({
-            url: "/send/" + phoneNum,
-            type: "GET",
-        });
-    },
-    deleteExample: function(id) {
-        return $.ajax({
-            url: "api/examples/" + id,
-            type: "DELETE"
-        });
-    }
 
 };
 
@@ -238,8 +260,15 @@ var handleTest = function() {
 
 }
 
-var handleToggleSignUp = function() {
-    $("#registerTab").click();
+var handleSensor = function () {
+API.testSensor().then(function(data){
+console.log("hello",data)
+})
+}
+
+var handleToggleSignUp = function () {
+  $("#registerTab").click();
+
 };
 
 var handleToggleLogIn = function() {
@@ -264,3 +293,5 @@ $("#loginAccount").on("click", handleToggleLogIn);
 $("#test-send-message").on("click", handleTest);
 $("#update-user-profile").on("click", handleUpdateProfile);
 $("#flooding-alert").on("click", handleFloodingAlert);
+$("#test-sensors").on("click", handleSensor)
+

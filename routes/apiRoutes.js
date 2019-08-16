@@ -55,6 +55,7 @@ module.exports = function(app) {
                 res.cookie("zipCode", dbUser.location);
                 res.render("userPage", dbUser.dataValues);
             } else {
+
                 console.log("HEY", dbUser)
                 res.send("404")
             }
@@ -68,7 +69,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/api/weather/:zipcode", function(req, res) {
+    app.get("/api/weather/:zipcode", function (req, res) {
         // we can get the zipcode from the cookie
 
 
@@ -97,4 +98,27 @@ module.exports = function(app) {
             res.json(message.sid)
         });
     });
+
+    // ROUTES FOR SENSOR DATA FROM RPI:
+    app.get("/api/sensor", function (req, res) {
+        db.Sensor.findAll({
+            limit: 1,
+            where: {
+                sensorType: "flame"
+                //your where conditions, or without them if you need ANY entry
+            },
+            order: [['createdAt', 'DESC']]
+        }).then(function (dbExamples) {
+            res.json(dbExamples);
+        });
+    });
+    
+
+    // Clears sensor output record
+    app.delete("/api/sensor/clear", function (req, res) {
+        db.Sensor.destroy({}).then(function (dbExample) {
+            res.json(dbExample);
+        });
+    });
+
 }
