@@ -1,13 +1,14 @@
 ![logo](./public/assets/images/logos/logo.png)
 
+
 # Horus: 
 ## *Keeping an eye on your home*
 
-Horus is an alarm monitoring application to provide the user with real time monitoring utilizing various inputs from your home - ie. water sensors, smoke detectors along with APIs that will notifiy you of potential adverse weather and natural events.
 
 ## Flow Chart
 
 ![Flow](./public/assets/images/Flow.PNG)
+
 
 
 ## Hardware Requirements
@@ -30,11 +31,22 @@ Horus is an alarm monitoring application to provide the user with real time moni
 
 ## Packages & Libraries
 
-### npm packages:
-- [moment.js](https://momentjs.com/)
-- [weather.js] (https://www.npmjs.com/package/weather-js)
-- [mocha](https://www.npmjs.com/package/mocha)
-- [chia](https://www.npmjs.com/package/chai)
+### Front End:
+
+- HTML5
+- CSS
+- Bootstrap
+- javaScript
+- jQuery
+- Handlebars
+- Python
+- PHP
+
+
+### Back End:
+- Node
+- Express
+
 
 ### Python libararies
 - [RPi.GPIO](https://pypi.org/project/RPi.GPIO/)
@@ -43,6 +55,23 @@ Horus is an alarm monitoring application to provide the user with real time moni
 - [urllib](https://docs.python.org/3/library/urllib.html#module-urllib)
 - [pymysql](https://pypi.org/project/PyMySQL/)
 - [dht11](https://www.arduinolibraries.info/libraries/dht-sensor-library)
+
+
+### Packages
+- Moment.js
+- Weather.js
+- Cookie-parser
+- Mocha/Chai
+- MySQL/Express
+- Handlebars
+
+
+### API's:
+
+- [Twilio](https://www.twilio.com/docs/iam/api)
+
+
+### EXTRA GOODIES THAT MAKE IT HAPPEN:
 
 
 ## API's:
@@ -70,3 +99,30 @@ Horus is an alarm monitoring application to provide the user with real time moni
 
 ## Notes
 ![alt text](public/assets/images/mySQLworkbench.jpg)
+
+- Raspberry Pi 3B
+- Bread Board with GPIO breakout 
+- Jumper Wires
+- Water Sensor with DAC circuit
+- PIR Sensor
+- IR Flame Sensor
+- Adobe Creative Cloud: Photoshop, Illustrator
+
+
+## Contributors
+
+- [Davis](https://github.com/daveyjonezz)
+- [Jenny](https://github.com/jenshin75)
+- [Madeleine](https://github.com/MadeleineKemeny)
+- [Mari](https://github.com/Mari0203)
+- [Susan](https://github.com/Sooze16)
+- [Ying](https://github.com/yzhouyzhou)
+
+
+## Acknowledgements:
+
+- [Piddler In the Root](https://www.piddlerintheroot.com/)
+*Tutorials and python code can be found here for the RPi sensors.
+- Isabel Arcones: tutor-extraordinaire
+- Phillip Loy: instructor, code-checker, and Most Valuable Player in the final hours
+
