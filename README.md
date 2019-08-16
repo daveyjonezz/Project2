@@ -20,8 +20,8 @@
 - Flame Sensor
 - Bread Board with GPIO breakout 
 - Jumper Wires
- 
 
+ 
 ## Software Requirements
 
 |     Front-end       |       Back-end     |
@@ -30,6 +30,7 @@
 
 
 ## Packages & Libraries
+
 
 ### Front End:
 
@@ -76,10 +77,6 @@
 
 ## API's:
 - [Twilio](https://www.twilio.com/docs/iam/api)
-- [Weather] (https://www.npmjs.com/package/weather-js)
-- [cookie-parser](https://www.npmjs.com/package/cookie-parser)
-- [mocha](https://www.npmjs.com/package/mocha)
-- [chia](https://www.npmjs.com/package/chai)
 
 
 ## Contributors
@@ -90,12 +87,14 @@
 - [Susan](https://github.com/Sooze16)
 - [Ying](https://github.com/yzhouyzhou)
 
+
 ## Acknowledgements
 [Piddler In the Root](https://www.piddlerintheroot.com/
 *Tutorials and python code can be found here for the RPi sensors.*
 
 [Raspberry Pi Documentation] (https://www.raspberrypi.org/documentation/)
 [Python Standard Library] (https://docs.python.org/3/library/)
+
 
 ## Notes
 ![alt text](public/assets/images/mySQLworkbench.jpg)
