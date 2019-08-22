@@ -89,6 +89,8 @@
 
 
 ## Notes
+Login with this email: test@test.com
+
 ![alt text](public/assets/images/mySQLworkbench.jpg)
 
 
